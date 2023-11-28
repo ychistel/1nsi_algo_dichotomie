@@ -1,0 +1,61 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{style2017}
+\usepackage{hyperref}
+\newcommand{\esp}{\hspace{0.5cm}}
+\newcommand{\espp}{\hspace{1cm}}
+\newcommand{\esppp}{\hspace{1.5cm}}
+
+\hypersetup{
+    colorlinks =false,
+    linkcolor=blue,
+   linkbordercolor = 1 0 0
+}
+\newcounter{numexo}
+\setcellgapes{1pt}
+
+
+\begin{document}
+
+\begin{NSI}
+{Exercice}{Recherche par dichotomie}
+\end{NSI}
+
+
+%\addtocounter{numexo}{1}
+%\subsection*{\Large Exercice \thenumexo}
+%Max et Lilly joue à devine nombre. Max pense à un nombre entier compris entre 1 et 1000 et Lilly doit le trouver. À chaque nombre proposé par Lilly, Max lui dit s'il est plus petit ou plus grand. 
+%
+%Si Lilly applique la recherche par dichotomie, en combien d'essais au maximum peut-elle trouver le nombre de Max ?
+
+
+\addtocounter{numexo}{1}
+\subsection*{\Large Exercice \thenumexo}
+Soit T un tableau trié tel que: $T=[8, 8, 17, 21, 23, 27, 28, 45, 57, 71, 77, 84, 88, 95, 97]$.
+\begin{enumerate}
+\item On veut vérifier la présence du nombre $23$ dans le tableau.
+\begin{enumerate}
+\item Retracer toutes les étapes de l'algorithme de recherche par dichotomie.
+\item Combien d'itérations ont été nécessaires?
+\end{enumerate}
+\item Faire de même avec le nombre $75$.
+\end{enumerate}
+
+
+\addtocounter{numexo}{1}
+\subsection*{\Large Exercice \thenumexo}
+
+\begin{enumerate}
+\item Créer un tableau $T$ de valeurs choisies aléatoirement entre 1 et 1000.
+\item Trier ce tableau avec une des fonctions de tri de python.
+\item Écrire l'algorithme de recherche par dichotomie en langage python.
+\item Tester votre programme avec la recherche de différentes valeurs du tableau et des valeurs qui ne sont pas dans le tableau.
+
+\item Modifier votre fonction pour renvoyer le nombre d'itérations nécessaires à la recherche d'une valeur.
+\item Proposer une version récursive de l'algorithme de recherche par dichotomie.
+\end{enumerate}
+
+
+\end{document}
+
+

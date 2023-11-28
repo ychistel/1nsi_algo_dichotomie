@@ -1,0 +1,78 @@
+<style>
+    .marge-4{margin:4px auto;}
+    .marge-8{margin:8px auto;}
+    .marge-16{margin:16px auto;}
+    .padding-12{padding:12px;}
+    .text-align-center{text-align: center;}
+    .alert{background: rgb(250, 136, 136); border:solid 1px red;}
+    .succes{background: rgb(167, 248, 140); border:solid 1px rgb(116, 179, 95);}
+    .jeu{padding:0 12px;text-align:center;}
+    .coin-arrondi-4{border-radius: 4px;}
+    .coin-arrondi-8{border-radius: 8px;}
+    .bordure{border:solid 1px #575175;}
+    .ombre{box-shadow: 2px 2px #7b7599;}
+    button.position, input.position{display:block;margin:8px auto}
+    button.apparence{padding: 8px 32px;background:#eee}
+    
+</style>
+
+<div class="admonition">
+<label class="jeu" for="guessInput">Devinez un nombre entre 1 et 100:</label>
+<input class="position" type="text" id="guessInput">
+<button id="btn" class="apparence bordure ombre coin-arrondi-4 position" onclick="startGame()">Jouez</button>
+<p id="result" class="coin-arrondi-4 padding-12 text-align-center"></p>
+</div>
+
+
+<script type="text/javascript">
+// Variable pour stocker le nombre de tentatives
+let attempts = 1;
+
+// Génération d'un nombre aléatoire entre 1 et 100
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+const guessInput = document.getElementById('guessInput');
+const result = document.getElementById('result');
+const buttonText = document.getElementById('btn');
+
+// Fonction pour démarrer le jeu
+function startGame() {
+    result.classList.remove('alert');
+    result.classList.remove('succes');
+
+    // Récupère la valeur de l'entrée
+    const userGuess = parseInt(guessInput.value);
+    
+    if (isNaN(userGuess)) {
+        result.textContent = 'Veuillez entrer un nombre valide.';
+        result.classList.add('alert');
+        return;
+    } 
+    
+    if (attempts == 1){
+        randomNumber = Math.floor(Math.random() * 100) + 1;
+    }
+
+    console.log(attempts,randomNumber,userGuess);
+    // Vérifie si le nombre est correct
+    if (userGuess === randomNumber) {
+        buttonText.textContent = 'Rejouez';
+        result.textContent = `Bravo! Vous avez deviné le nombre en ${attempts} tentative(s)!`;
+        result.classList.add('succes');
+        attempts = 1;
+    } else if (userGuess < randomNumber) {
+        buttonText.textContent = 'Continuez';
+
+        result.textContent = 'Plus';
+        attempts++;
+    } else {
+        buttonText.textContent = 'Continuez';
+        result.textContent = 'Moins';
+        attempts++;
+    }
+    // Efface la valeur de l'entrée
+    guessInput.value = '';
+}
+
+
+</script>

@@ -1,0 +1,63 @@
+<script type="text/javascript">
+
+    function estValide(n){
+        // Vérifie si le nombre est valide
+        if (isNaN(n)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //fonction pour commencer une partie
+    function commencer(){
+        console.log("début du jeu");
+        // Génération d'un nombre aléatoire entre 1 et 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        // Variable pour stocker le nombre de tentatives
+        let attempts = 0;
+
+        // Demande au joueur d'entrer un nombre
+        var userGuess = parseInt(prompt('Devinez un nombre entre 1 et 100:'));
+        if (estValide(userGuess)){
+            // Incrémente le nombre de tentatives
+            attempts++;
+            jouer(userGuess,randomNumber,attempts);
+        } else {
+            commencer();
+        }
+    }
+
+    // Fonction pour jouer
+    function jouer(n,r,a) {
+        console.log(a,r,n);
+        if (n == r) {
+            console.log("gagné");
+            alert(`Bravo! Vous avez deviné le nombre en ${a} tentative(s)!`);
+            return;
+        } else if (n < r) {
+            var userGuess = prompt('Le nombre est plus grand. Essayez encore.');
+            if (estValide(userGuess)){
+                a++;
+                jouer(userGuess,r,a);
+            } else {
+                jouer(userGuess,r,a);
+            }
+        } else {
+            var userGuess = prompt('Le nombre est plus petit. Essayez encore.');
+            if (estValide(userGuess)){
+                a++;
+                jouer(userGuess,r,a);
+            } else {
+                jouer(userGuess,r,a);
+            }
+            
+        }
+    }
+
+</script>
+<div class="admonition">
+    <div id="reponse"></div>
+    <button onclick='commencer();'>Lancer le jeu</button>
+</div>
