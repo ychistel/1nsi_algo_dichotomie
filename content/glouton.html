@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Algorithme glouton &#8212; NSI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/glouton';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">NSI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="activite.html">Activité</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cours.html">Recherche dichotomique</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/glouton.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Algorithme glouton</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probleme-du-rendu-de-monnaie">Problème du rendu de monnaie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmation-python">Programmation python</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="algorithme-glouton">
+<h1>Algorithme glouton<a class="headerlink" href="#algorithme-glouton" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>Certains problèmes ont plusieurs solutions, voire un très grand nombre de solutions. Parmi toutes ces solutions, il en
+existe qui sont plus optimales selon les contraintes imposées. La recherche de toutes les solutions peut être
+extrêmement gourmand en ressources et en temps d’exécution. Une stratégie, dite glouton, permet d’optimiser le temps de
+recherche en proposant une solution qui sera optimale dans certains cas et non optimale dans d’autres cas. Le problème
+du rendu de monnaie en est un bon exemple.</p>
+<section id="probleme-du-rendu-de-monnaie">
+<h2>Problème du rendu de monnaie<a class="headerlink" href="#probleme-du-rendu-de-monnaie" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>On cherche à égaler une somme à rendre en utilisant le moins d’unités possible prises parmi un sytème défini à l’avance et dont le nombre est illimité. Cela signifie qu’on dispose d’assez d’unités pour rendre une somme quelle qu’elle soit.</p>
+<p>Ici on suppose que le système d’unités est le suivant : <code class="docutils literal notranslate"><span class="pre">[100,</span> <span class="pre">50,</span> <span class="pre">20,</span> <span class="pre">10,</span> <span class="pre">5,</span> <span class="pre">2,</span> <span class="pre">1]</span></code>.</p>
+<ol class="arabic">
+<li><p>Pour rendre la somme de 9 unités, la combinaison qui utlise le moins d’unités est 3 : <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">2,</span> <span class="pre">2]</span></code>.</p></li>
+<li><p>Un algorithme dit <strong>glouton</strong> résout ce problème. Cet algorithme enlève la plus grosse unité possible à la somme à rendre jusqu’à ce que la somme à rendre soit nulle.</p>
+<p>En l’appliquant à la somme à rendre de 9 euros :</p>
+<ul class="simple">
+<li><p>on enlève la valeur 5 (la plus grande possible) ; il reste à rendre 4 unités</p></li>
+<li><p>on enlève la valeur 2 ; il reste à rendre 2 unités</p></li>
+<li><p>on enlève la valeur 2 ; il reste 0 unité à rendre</p></li>
+</ul>
+<p>La combinaison est bien de trois unités, solution optimale.</p>
+</li>
+<li><p>Cet algorithme donne une solution mais elle n’est pas toujours optimale comme le montre l’exemple suivant.</p>
+<p>Prenons comme système monétaire les valeurs 1, 3, 6, 12, 24 et 30.</p>
+<ol class="loweralpha">
+<li><p>Comment rendre la somme de 48 unités de manière optimisée ?</p>
+<p>En appliquant l’algorithme glouton, on obtient :</p>
+<ul class="simple">
+<li><p>on enlève la plus grande valeur possible 30 ; il reste 18 unités à rendre</p></li>
+<li><p>on enlève la plus grande valeur possible 12 ; il reste 6 unités à rendre</p></li>
+<li><p>on enlève la plus grande valeur possible 6 ; il reste 0 unité à rendre</p></li>
+</ul>
+<p>La solution donnée par l’algorithme glouton est 3 unités (30, 12 et 6). Elle n’est pas optimale car on peut rendre
+la somme de 48 unités avec 2 unitéss de valeur 24.</p>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="programmation-python">
+<h2>Programmation python<a class="headerlink" href="#programmation-python" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Un algorithme glouton appliqué au problème du rendu de monnaie se présente ainsi :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tableau des unités = [200, 100, 50, 20, 10, 5, 2, 1] (ordre croissant)
+nombre_unités = 0
+On prend la première pièce du tableau des unités (la plus grande)
+Tant que la somme à rendre est supérieure à 0:
+   Si la pièce est plus grande que la somme à rendre:
+      on la soustrait de la somme à rendre
+      nombre_unités augmente de 1
+   sinon:
+      on passe à la pièce suivante
+</pre></div>
+</div>
+<p>Il existe différentes écritures de cet algorithme en Python.</p>
+<ol class="arabic">
+<li><p>En utilisant une seule boucle <code class="docutils literal notranslate"><span class="pre">while</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">rendu_monnaie</span><span class="p">(</span><span class="n">somme_a_rendre</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">tableau_des_unites</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="linenos"> 3</span>    <span class="n">nombre_unites</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 4</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 5</span>    <span class="n">piece</span> <span class="o">=</span> <span class="n">tableau_des_unites</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="linenos"> 6</span>    <span class="k">while</span> <span class="n">somme_a_rendre</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos"> 7</span>        <span class="k">if</span> <span class="n">somme_a_rendre</span> <span class="o">&gt;=</span> <span class="n">piece</span><span class="p">:</span>
+<span class="linenos"> 8</span>            <span class="n">somme_a_rendre</span> <span class="o">=</span> <span class="n">somme_a_rendre</span> <span class="o">-</span> <span class="n">piece</span>
+<span class="linenos"> 9</span>            <span class="n">nombre_unites</span> <span class="o">=</span> <span class="n">nombre_unites</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">10</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">11</span>            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">12</span>            <span class="n">piece</span> <span class="o">=</span> <span class="n">tableau_des_unites</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rendu_monnaie</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</li>
+<li><p>En utilisant 2 boucles imbriquées :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">rendu_monnaie</span><span class="p">(</span><span class="n">somme_a_rendre</span><span class="p">):</span>
+<span class="linenos">2</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;somme à rendre (int) -&gt; nombre de pièces (int)&quot;&quot;&quot;</span>
+<span class="linenos">3</span>    <span class="n">pieces</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="linenos">4</span>    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># nombre pièces</span>
+<span class="linenos">5</span>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pieces</span><span class="p">:</span>
+<span class="linenos">6</span>        <span class="k">while</span> <span class="n">somme_a_rendre</span> <span class="o">&gt;=</span> <span class="n">p</span><span class="p">:</span>
+<span class="linenos">7</span>            <span class="n">somme_a_rendre</span> <span class="o">=</span> <span class="n">somme_a_rendre</span> <span class="o">-</span> <span class="n">p</span>
+<span class="linenos">8</span>            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">9</span>    <span class="k">return</span> <span class="n">n</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rendu_monnaie</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probleme-du-rendu-de-monnaie">Problème du rendu de monnaie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmation-python">Programmation python</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Yannick Chistel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023,Yannick Chistel.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
