@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="fr" data-content_root="" >
+<html lang="fr" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Recherche dichotomique &#8212; NSI</title>
   
@@ -19,36 +18,37 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6621bbe" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script src="../_static/translations.js"></script>
+    <script src="../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../_static/translations.js?v=d99ca74e"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/cours';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Exercices" href="exercice.html" />
     <link rel="prev" title="Activité" href="activite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
@@ -59,14 +59,13 @@
 
   
   
-  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Passer au contenu principal</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
-    Back to top
+    Haut de page
   </button>
 
   
@@ -103,11 +102,14 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -135,11 +137,23 @@
     <p class="title logo__title">NSI</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="activite.html">Activité</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Recherche dichotomique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercice.html">Exercices</a></li>
 </ul>
 
     </div>
@@ -300,16 +314,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="recherche-dichotomique">
-<h1>Recherche dichotomique<a class="headerlink" href="#recherche-dichotomique" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Recherche dichotomique<a class="headerlink" href="#recherche-dichotomique" title="Link to this heading">#</a></h1>
 <p>La <strong>dichotomie</strong> est un mot d’origine greque qui signifie « diviser en deux ».</p>
 <p>La recherche d’une valeur par dichotomie dans un tableau peut être facilitée si celui-ci est trié. Dans ce cas, on
 divise successivement le tableau en 2 jusqu’à atteindre la valeur cherchée.</p>
 <section id="l-algorithme">
-<h2>L’algorithme<a class="headerlink" href="#l-algorithme" title="Lien permanent vers cette rubrique">#</a></h2>
-<p>Voici une écriture de l’algorithme de recherche dichotomique dans un <strong>tableau trié</strong> :</p>
+<h2>L’algorithme<a class="headerlink" href="#l-algorithme" title="Link to this heading">#</a></h2>
+<div class="algo admonition">
+<p class="admonition-title">Algorithme</p>
+<p>L’algorithme de recherche dichotomique se fait dans un <strong>tableau trié</strong>. On définit plusieurs variables :</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">t</span></code> désigne un tableau trié</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> est la valeur cherchée dans le tableau</p></li>
@@ -332,9 +348,8 @@ tant que deb &lt;= fin:
 on sort de la boucle, la valeur n&#39;est pas trouvée
 </pre></div>
 </div>
-<div class="admonition-exemple admonition">
-<p class="admonition-title">Exemple</p>
-<p>On cherche la valeur 12 dans le tableau trié <code class="docutils literal notranslate"><span class="pre">t=[5,</span> <span class="pre">9,</span> <span class="pre">12,</span> <span class="pre">14,</span> <span class="pre">15,</span> <span class="pre">16,</span> <span class="pre">19,</span> <span class="pre">20,</span> <span class="pre">23,</span> <span class="pre">25]</span></code>.</p>
+</div>
+<p>Appliquons cet algorithme pour rechercher la valeur 12 dans le tableau trié <code class="docutils literal notranslate"><span class="pre">t=[5,</span> <span class="pre">9,</span> <span class="pre">12,</span> <span class="pre">14,</span> <span class="pre">15,</span> <span class="pre">16,</span> <span class="pre">19,</span> <span class="pre">20,</span> <span class="pre">23,</span> <span class="pre">25]</span></code>.</p>
 <ol class="arabic">
 <li><p>Première itération</p>
 <ul class="simple">
@@ -358,47 +373,50 @@ on sort de la boucle, la valeur n&#39;est pas trouvée
 </ul>
 <img alt="dicho_3.png" class="align-center" src="../_images/dicho_3.svg" /></li>
 </ol>
-</div>
 </section>
 <section id="terminaison-de-l-algorithme">
-<h2>Terminaison de l’algorithme<a class="headerlink" href="#terminaison-de-l-algorithme" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Terminaison de l’algorithme<a class="headerlink" href="#terminaison-de-l-algorithme" title="Link to this heading">#</a></h2>
+<p>L’algorithme de recherche utilise une boucle. Comment être sûr que cette boucle se termine même si la valeur cherchée n’est pas dans le tableau ?</p>
+<div class="definition admonition">
+<p class="admonition-title">Définition</p>
 <p>On appelle <strong>variant de boucle</strong> une quantité entière qui est positive ou nulle et décroit strictement à chaque itération.</p>
-<p>Si on trouve une telle quantité dans une boucle while, celle-ci se termine.</p>
-<p class="rubric" id="preuve-de-la-terminaison">Preuve de la terminaison</p>
-<p>Dans l’algorithme de <strong>recherche par dichotomie</strong>, le test <code class="docutils literal notranslate"><span class="pre">deb</span> <span class="pre">&lt;</span> <span class="pre">fin</span></code> est équivalent à <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>. Le nombre <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span></code> est un variant de boucle.</p>
+<p>Si on trouve une telle quantité dans une boucle, alors on est sûr que la boucle se termine.</p>
+</div>
+<p class="rubric">Preuve de la terminaison</p>
+<p>Dans l’algorithme de <strong>recherche par dichotomie</strong>, le test <code class="docutils literal notranslate"><span class="pre">deb</span> <span class="pre">&lt;</span> <span class="pre">fin</span></code> est équivalent au test <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>. Le nombre <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span></code> est un variant de boucle.</p>
 <ul class="simple">
 <li><p>Le nombre <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span></code> est strictement positif dans la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code>.</p></li>
-<li><p>De plus, le nombre <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span></code> décroît car à chaque itération, soit c’est l’indice <code class="docutils literal notranslate"><span class="pre">deb</span></code> qui augmente, soit c’est le nombre <code class="docutils literal notranslate"><span class="pre">fin</span></code> qui diminue.</p></li>
+<li><p>Le nombre <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span></code> décroît car à chaque itération. C’est soit l’indice <code class="docutils literal notranslate"><span class="pre">deb</span></code> qui augmente, soit l’indice <code class="docutils literal notranslate"><span class="pre">fin</span></code> qui diminue.</p></li>
 </ul>
-<p>En conclusion, le nombre <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span></code> est un <strong>variant de boucle</strong> positif qui décroit, assurant la terminaison de la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> de l’algorithme de recherche par dichotoime.</p>
+<p>En conclusion, le nombre <code class="docutils literal notranslate"><span class="pre">fin</span> <span class="pre">-</span> <span class="pre">deb</span></code> est un <strong>variant de boucle</strong> positif qui décroit, assurant la terminaison de la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> de l’algorithme de recherche par dichotomie.</p>
 </section>
 <section id="complexite-de-l-algorithme">
-<h2>Complexité de l’algorithme<a class="headerlink" href="#complexite-de-l-algorithme" title="Lien permanent vers cette rubrique">#</a></h2>
-<p>La recherche dichotomique s’applique sur un tableau trié de nombres.</p>
-<p>Au départ, on compare le nombre cherché N avec la valeur du nombre M situé au milieu du tableau.</p>
-<ul class="simple">
-<li><p>S’il est inférieur, N&lt;M, alors on cherche le nombre N dans la première moitié du tableau.</p></li>
-<li><p>S’il est supérieur, N&gt;M, alors on cherche le nombre N dans la seconde moitié du tableau.</p></li>
-</ul>
-<p>On recommence la recherche dans un tableau dont la longueur est divisée par 2. Dans le pire des cas, si le nombre cherché n’est pas dans le tableau, alors celui-ci est vide à la fin de la recherche.</p>
-<p>Le nombre d’itérations <cite>p</cite> nécessaires pour vérifier la présence du nombre cherché vérifie la relation
-<span class="math notranslate nohighlight">\(2^{p} \geqslant n\)</span> où <code class="docutils literal notranslate"><span class="pre">n</span></code> est la longueur initiale du tableau.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}2^{p} \geqslant n &amp; \Longleftrightarrow log(2^{p}) \geqslant log(n) \\
-&amp; \Longleftrightarrow  p \times log(2) \geqslant log(n) \\
-&amp; \Longleftrightarrow p \geqslant \dfrac{log(n)}{log(2)} \\
-&amp; \Longleftrightarrow p \geqslant log_{2}(n)\end{split}\]</div>
-<p>donc le nombre de comparaison <span class="math notranslate nohighlight">\(p\)</span> est supérieur ou égal à <span class="math notranslate nohighlight">\(log_{2}(n)\)</span> dans le pire des cas.</p>
-<p>La complexité de l’algorithme de recherche dichotomique est <strong>logarithmique</strong> : <span class="math notranslate nohighlight">\(O(log_{2}(n))\)</span>.</p>
-<div class="admonition-exemple admonition">
-<p class="admonition-title">Exemple</p>
-<p>Pour un tableau trié contenant 20 nombres, en supposant le pire des cas, c’est à dire que le nombre cherché n’est pas dans le tableau, on cherche successivement dans un tableau de longueur 20, puis un tableau de longueur 9, puis de longueur 4, de longueur 2 et finalement un tableau à 1 élément.</p>
-<p>Cela implique, dans le pire des cas, 5 itérations de la boucle while. En calculant dans une console Python <code class="docutils literal notranslate"><span class="pre">log2(20)</span></code> on obtient environ <code class="docutils literal notranslate"><span class="pre">4.32</span></code> soit les 5 itérations attendues.”</p>
+<h2>Complexité de l’algorithme<a class="headerlink" href="#complexite-de-l-algorithme" title="Link to this heading">#</a></h2>
+<p>La recherche dichotomique s’applique sur un tableau trié de nombres. À chaque itération, la recherche se fait dans une partie du tableau dont la longueur est divisée par 2. Inévitablement, la longueur finit par être égale à 0.</p>
+<p>Combien d’itérations faut-il pour obtenir une zone du tableau dont la longueur est 0 ?</p>
+<p>Prenons en exemple un tableau trié contenant 50 valeurs. La zone de recherche est divisée en 2 à chaque itération ce qui donne des longueurs de 50, 25, 12, 6, 3, 1 et 0. On obtient une zone le longueur nulle en 6 itérations.</p>
+<p>Du point de vue mathématique, on peut remarquer que <span class="math notranslate nohighlight">\(2^{5} = 32 &lt; 50\)</span> et que <span class="math notranslate nohighlight">\(2^{6} = 64 &gt; 50\)</span>. Donc le nombre d’itérations correspond au plus petit exposant entier de 2 qui dépasse le nombre de valeurs dans le tableau.</p>
+<div class="propriete admonition">
+<p class="admonition-title">Propriété</p>
+<p>Le nombre d’itérations maximum pour chercher une valeur dans un tableau trié contenant <code class="docutils literal notranslate"><span class="pre">n</span></code> valeurs est le nombre entier <code class="docutils literal notranslate"><span class="pre">p</span></code>, premier exposant du nombre 2 tel que <span class="math notranslate nohighlight">\(2^{p} \geqslant n\)</span>.</p>
+<p>Le nombre <code class="docutils literal notranslate"><span class="pre">p</span></code> est le logarithme du nombre <code class="docutils literal notranslate"><span class="pre">n</span></code> en base 2 : <span class="math notranslate nohighlight">\(p=\log_{2}(n)\)</span></p>
+</div>
+<div class="propriete admonition">
+<p class="admonition-title">Propriété</p>
+<p>La complexité de l’algorithme de recherche dichotomique est <strong>logarithmique</strong> et se note <span class="math notranslate nohighlight">\(O(\log_{2}(n))\)</span>.</p>
+<p>Cette complexité est une complexité dans le pire des cas, c’est à dire lorsque le nombre cherché n’est pas dans le tableau.</p>
+<p>La complexité logarithmique est plus efficace que la complexité linéaire : <span class="math notranslate nohighlight">\(O(\log_{2}(n)) &lt; O(n)\)</span></p>
+</div>
+<p>Par exemple, un tableau trié contient 200 nombres, en supposant le pire des cas, c’est à dire que le nombre cherché n’est pas dans le tableau, nécessite au moins 8 itérations car <span class="math notranslate nohighlight">\(2^{8} = 256 &gt; 200\)</span>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Indication</p>
+<p>On peut calculer le logarithme en base 2 d’un nombre en Python:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">log2</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="go">4.321928094887363</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">log2</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="go">7.643856189774724</span>
 </pre></div>
 </div>
+<p>Ce résultat confirme qu’il faut 8 itérations pour montrer que le nombre cherché n’est pas dans le tableau.</p>
 </div>
 </section>
 </section>
@@ -423,6 +441,15 @@ on sort de la boucle, la valeur n&#39;est pas trouvée
         <p class="prev-next-title">Activité</p>
       </div>
     </a>
+    <a class="right-next"
+       href="exercice.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Exercices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -431,6 +458,7 @@ on sort de la boucle, la valeur n&#39;est pas trouvée
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -489,8 +517,8 @@ Par Yannick Chistel
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

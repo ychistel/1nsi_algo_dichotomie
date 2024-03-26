@@ -14,3 +14,4 @@ Recherche par dichotomie
    
    content/activite.rst
    content/cours.rst
+   content/exercice.rst
