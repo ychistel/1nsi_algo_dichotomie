@@ -49,8 +49,8 @@ On souhaite mesurer le temps de recherche d'un nombre dans un tableau trié. On 
    :lines: 1-27
 
 #. Ajouter le code de votre fonction ``recherche_dico`` juste après la ligne d'import et juste avant le code de la fonction ``mesure``.
-#. Les mesures sont réalisées sur des tableaux contenant les ``n`` premiers nombres entiers en commençant à 1.Compléter le code dans la fonction mesure pour créer un tableau ``t`` ordonné de nombres.
-#. On cherche dans le tableau la valeur 0. Comme elle n'y est pas, la complexité est celle du pire des cas. Pour mesurer le temps d'exécution de la fonction sur un tableau de 1000 nombres, il faut saisir en console l'instruction :
+#. Les mesures sont réalisées sur des tableaux contenant les ``n`` premiers nombres entiers en commençant à 1. Compléter le code dans la fonction mesure pour créer un tableau ``t`` ordonné de nombres.
+#. On cherche dans le tableau la valeur 0. Comme elle n'y est pas, c'est la complexité dans le pire des cas. Pour mesurer le temps d'exécution de la fonction sur un tableau de 1000 nombres, il faut saisir en console l'instruction :
 
    >>> mesure("recherche_dico",1000)
 

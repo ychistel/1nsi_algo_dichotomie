@@ -356,6 +356,8 @@ on sort de la boucle, la valeur n&#39;est pas trouvée
 <p>On souhaite mesurer le temps de recherche d’un nombre dans un tableau trié. On donne la fonction <code class="docutils literal notranslate"><span class="pre">mesure</span></code> ci-après pour mesurer le temps d’exécution de la recherche par dichotomie d’une valeur.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
+<span class="c1"># ici code de la fonction de recherche dichotomique</span>
+
 <span class="k">def</span> <span class="nf">mesure</span><span class="p">(</span><span class="n">fct</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Paramètres :</span>
@@ -369,7 +371,9 @@ on sort de la boucle, la valeur n&#39;est pas trouvée
     <span class="n">tps</span> <span class="o">=</span> <span class="mf">0.0</span>
     
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="c1"># on crée un tableau t contenant les n premiers nombres entiers [1,2,3,...]</span>
         <span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;...&#39;</span><span class="p">]</span>
+        <span class="c1"># v valeur cherchée dans le tableau</span>
         <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">expression</span> <span class="o">=</span> <span class="n">fct</span> <span class="o">+</span> <span class="s2">&quot;(t,v)&quot;</span>
         
@@ -377,16 +381,12 @@ on sort de la boucle, la valeur n&#39;est pas trouvée
         <span class="n">t_0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
         <span class="nb">eval</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
         <span class="n">t_1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-        <span class="n">tps</span> <span class="o">=</span> <span class="n">tps</span> <span class="o">+</span> <span class="p">(</span><span class="n">t_1</span><span class="o">-</span><span class="n">t_0</span><span class="p">)</span>
-    
-    <span class="c1"># on renvoie le temps moyen d&#39;exécution de la fonction</span>
-    <span class="k">return</span> <span class="n">tps</span><span class="o">/</span><span class="mi">10</span>
 </pre></div>
 </div>
 <ol class="arabic">
 <li><p>Ajouter le code de votre fonction <code class="docutils literal notranslate"><span class="pre">recherche_dico</span></code> juste après la ligne d’import et juste avant le code de la fonction <code class="docutils literal notranslate"><span class="pre">mesure</span></code>.</p></li>
-<li><p>Les mesures sont réalisées sur des tableaux contenant les <code class="docutils literal notranslate"><span class="pre">n</span></code> premiers nombres entiers en commençant à 1.Compléter le code dans la fonction mesure pour créer un tableau <code class="docutils literal notranslate"><span class="pre">t</span></code> ordonné de nombres.</p></li>
-<li><p>On cherche dans le tableau la valeur 0. Comme elle n’y est pas, la complexité est celle du pire des cas. Pour mesurer le temps d’exécution de la fonction sur un tableau de 1000 nombres, il faut saisir en console l’instruction :</p>
+<li><p>Les mesures sont réalisées sur des tableaux contenant les <code class="docutils literal notranslate"><span class="pre">n</span></code> premiers nombres entiers en commençant à 1. Compléter le code dans la fonction mesure pour créer un tableau <code class="docutils literal notranslate"><span class="pre">t</span></code> ordonné de nombres.</p></li>
+<li><p>On cherche dans le tableau la valeur 0. Comme elle n’y est pas, c’est la complexité dans le pire des cas. Pour mesurer le temps d’exécution de la fonction sur un tableau de 1000 nombres, il faut saisir en console l’instruction :</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesure</span><span class="p">(</span><span class="s2">&quot;recherche_dico&quot;</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
