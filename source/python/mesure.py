@@ -1,5 +1,7 @@
 from time import time
 
+# ici code de la fonction de recherche dichotomique
+
 def mesure(fct,n):
     """
     Paramètres :
@@ -13,7 +15,9 @@ def mesure(fct,n):
     tps = 0.0
     
     for _ in range(10):
+        # on crée un tableau t contenant les n premiers nombres entiers [1,2,3,...]
         t = ['...']
+        # v valeur cherchée dans le tableau
         v = 0
         expression = fct + "(t,v)"
         
