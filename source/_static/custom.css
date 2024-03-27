@@ -1,6 +1,9 @@
 :root{
     --color-blue:#2b5b84;
     --color-blue-light:#adc5d9;
+    --color-gray:#d4d4d4;
+    --color-gray-light:#eee;
+    --color-gray-dark:#4d4d4d;
 }
 
 .margin-none{margin:none}
@@ -22,9 +25,11 @@
 .border-style-solid{border-style: solid}.border-style-dotted{border-style: dotted}.border-style-dashed{border-style: dashed}
 .border-width-1{border-width:1px}.border-width-2{border-width:2px}.border-width-3{border-width:3px}.border-width-4{border-width:4px}.border-width-5{border-width:5px}
 .border-color-blue-light{border-color:var(--color-blue-light)}
+.border-color-gray{border-color:var(--color-gray)}
 
 table.table{width:auto;}
 table.table td p, table.table th p{margin:auto 1em;text-align:center;}
+table.bordure td{border: solid 1px var(--color-gray)}
 
 /*correctif pour bordure lien a lorsque largeur imposée*/
 a.border-none{border:none}
@@ -34,7 +39,19 @@ a.border-none{border:none}
 p.rubric{color:var(--color-blue);border-bottom:solid 1px var(--color-blue-light)}
 
 div.docutils.container{margin:1.5625em auto;padding:0;}
-div.exemple{border-image-source: url(bordure-ondule.svg);border-image-width:8px;border-image-slice:0 0 0 8;border-image-repeat:repeat;}
+
 div.exemple p{margin:8px 16px;}
 div.exemple p.rubric{color: #4d4d4d;border-bottom:solid 1px #4d4d4d}
 div.exemple p.rubric:before{content:'\270E';display:contents;}
+
+div.definition.admonition{border-color:#2b5b84;}
+div.definition > p.admonition-title{background-color:#badafa;color:#2b5b84;}
+div.definition > p.admonition-title::after{color:#2b5b84;content: "\e1fe";}
+
+div.code.admonition{border-color:#249b22;}
+div.code > p.admonition-title{background-color:#b3f962;color:rgb(39, 54, 47)}
+div.code > p.admonition-title::after{color:#404140;content: "\f121";}
+
+div.propriete.admonition{border-color:#404140;}
+div.propriete > p.admonition-title{background-color:#d4d4d4;color:#404140;}
+div.propriete > p.admonition-title::after{color:#404140;content: "\f013";}
