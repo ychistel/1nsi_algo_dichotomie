@@ -11,6 +11,7 @@ Recherche par dichotomie
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
    
    content/activite.rst
    content/cours.rst
